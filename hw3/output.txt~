@@ -1,0 +1,18 @@
+3a. If passed an argument, exec.c overtakes the current running process and runs the program given as the argument.
+
+3b. If the execve() function runs into some sort of error, like the passed in program doesn't exist, then the original process
+maintains control and the final print statement will be executed.
+
+3c. hiltoni@texas:~/Documents/CS324/fork_exec_lab/hw3$ ./exec /bin/cat
+
+3d.
+hiltoni@texas:~/Documents/CS324/fork_exec_lab/hw3$ ps -p 29576 -o user,pid,ppid,state,ucmd
+USER       PID  PPID S CMD
+hiltoni  29576 28311 S exec
+hiltoni@texas:~/Documents/CS324/fork_exec_lab/hw3$ ps -p 29576 -o user,pid,ppid,state,ucmd
+USER       PID  PPID S CMD
+hiltoni  29576 28311 S cat
+
+3e. The pid and ppid are the same between the two outputs, the state is identical between the outputs, but the command is different. During the initial sleep, the command is exec because ......
+After the exec call, the command is cat, because as a result of the exec, the program is now running the cat program.
+
